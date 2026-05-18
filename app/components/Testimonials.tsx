@@ -3,38 +3,45 @@ import { Icon } from "./icons";
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="bg-white py-20 lg:py-28">
+    <section id="reviews" className="bg-paper-deep py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-green">
             Reviews
           </p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Homeowners love the results
+          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight text-ink sm:text-4xl">
+            What neighbors are saying
           </h2>
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((t) => (
+          {testimonials.map((t, i) => (
             <blockquote
-              key={t.name}
-              className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-7"
+              key={i}
+              className="relative flex flex-col border border-ink/10 bg-paper p-7"
             >
-              <div className="flex gap-1 text-accent">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Icon key={i} name="star" width={18} height={18} />
-                ))}
-              </div>
-              <p className="mt-4 flex-1 text-slate-700">
-                &ldquo;{t.quote}&rdquo;
+              <Icon
+                name="quote"
+                width={34}
+                height={34}
+                className="text-green/30"
+              />
+              <p className="mt-3 flex-1 font-display text-lg leading-relaxed text-ink/85">
+                {t.quote}
               </p>
-              <footer className="mt-6">
-                <p className="font-bold text-slate-900">{t.name}</p>
-                <p className="text-sm text-slate-500">{t.location}</p>
+              <footer className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4">
+                <span className="font-semibold text-ink">{t.name}</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-deep">
+                  {t.source}
+                </span>
               </footer>
             </blockquote>
           ))}
         </div>
+        <p className="mt-8 text-center text-xs text-ink/45">
+          Themes from public reviews — replace with verbatim quotes once you
+          have permission to publish them.
+        </p>
       </div>
     </section>
   );

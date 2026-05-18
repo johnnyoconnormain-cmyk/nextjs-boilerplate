@@ -1,103 +1,115 @@
 // =============================================================================
-// EDIT THIS FILE with the real business details before going live.
-// Everything the site displays (phone, email, address, hours, areas) comes
-// from here so you only change it in one place.
+// REAL business details for Mario's Painting, Ellensburg WA.
+// Taken from the live mariospainting.org site (header + services page).
 // =============================================================================
 
 export const site = {
   name: "Mario's Painting",
-  tagline: "Professional Interior & Exterior Painting",
-  // Use a real, dialable number. Format the display however you like;
-  // `phoneHref` must be digits only with country code.
-  phoneDisplay: "(555) 123-4567",
-  phoneHref: "+15551234567",
-  email: "hello@mariospainting.org",
-  // Service area — shown in the hero, footer, and SEO data.
-  city: "Springfield",
-  region: "IL",
+  // Their actual tagline strip from the site header.
+  tagline: "Interior · Exterior · Commercial · Residential",
+  pitch: "Highly Professional Painting",
+  // Real number shown on the live site (NOT the outdated directory listings).
+  phoneDisplay: "509-859-3263",
+  phoneHref: "+15098593263",
+  email: "marchesipainter@gmail.com",
+  // Washington State contractor license # shown on their site.
+  license: "MARIOP*852LK",
+  established: 2006,
+  get yearsInBusiness() {
+    return new Date().getFullYear() - this.established;
+  },
+  city: "Ellensburg",
+  region: "WA",
+  areaName: "the Kittitas Valley",
   serviceAreas: [
-    "Springfield",
-    "Chatham",
-    "Rochester",
-    "Sherman",
-    "Riverton",
-    "Auburn",
-    "New Berlin",
-    "Pawnee",
+    "Ellensburg",
+    "Kittitas",
+    "Cle Elum",
+    "Roslyn",
+    "South Cle Elum",
+    "Thorp",
+    "Easton",
+    "Vantage",
   ],
   address: {
-    street: "123 Main Street",
-    city: "Springfield",
-    region: "IL",
-    postalCode: "62701",
+    street: "604 E 5th Ave",
+    city: "Ellensburg",
+    region: "WA",
+    postalCode: "98926",
   },
-  hours: "Mon–Sat: 7:00 AM – 6:00 PM",
-  yearsInBusiness: 20,
-  licenseInfo: "Licensed & Insured",
-  // Social links — leave "" to hide.
-  social: {
-    facebook: "",
-    instagram: "",
-    google: "",
-  },
+  hours: "Mon–Fri: 8:00 AM – 5:00 PM",
+  licenseInfo: "Licensed, Bonded & Insured",
+  // Drop a real logo file in /public and set this (e.g. "/logo.png").
+  // Left blank → the built-in Trinacria emblem + wordmark is used.
+  logo: "",
+  social: { facebook: "", instagram: "", google: "" },
 } as const;
 
+// Service copy is taken from their live site (lightly tidied).
 export const services = [
   {
     title: "Interior Painting",
+    swatch: "#6a1f5c",
     description:
-      "Walls, ceilings, trim, and accent finishes that transform any room. Clean lines, low-odor paints, and zero mess left behind.",
+      "We strive to make interior painting a low-stress experience. We're unobtrusive, quiet, and clean — well-organized planning ensures no time is wasted.",
     icon: "roller",
   },
   {
     title: "Exterior Painting",
+    swatch: "#4f8a2f",
     description:
-      "Boost curb appeal and protect your home from the elements with durable, weather-resistant coatings and expert prep.",
+      "Preparation is the key to exterior painting. Our crew has an eye for detail, taking every necessary step to make sure your home looks outstanding.",
     icon: "house",
   },
   {
-    title: "Cabinet Refinishing",
+    title: "Cabinet Painting",
+    swatch: "#9a5a1f",
     description:
-      "Give your kitchen a brand-new look for a fraction of a remodel with factory-smooth cabinet painting and refinishing.",
+      "Tired oak made new again. Our cabinet refinishing turns dated kitchens into bright, modern spaces — see the before & after below.",
     icon: "cabinet",
   },
   {
-    title: "Drywall & Repair",
+    title: "Wood Restoration",
+    swatch: "#7a4326",
     description:
-      "Cracks, holes, water damage, and texture matching — repaired and painted so you'd never know it was there.",
-    icon: "patch",
+      "Choosing the right contractor makes all the difference. From decks to fences, we have plenty of wood restoration experience.",
+    icon: "log",
   },
   {
-    title: "Deck & Fence Staining",
+    title: "Commercial",
+    swatch: "#3a4a63",
     description:
-      "Protect and beautify outdoor wood with premium stains and sealants that stand up to sun, rain, and snow.",
-    icon: "deck",
-  },
-  {
-    title: "Commercial Painting",
-    description:
-      "Offices, retail, and rental properties painted on schedule and on budget — with flexible after-hours scheduling.",
+      "Storefronts, offices, and rental properties painted on schedule and on budget, with flexible scheduling to fit your business.",
     icon: "building",
   },
-] as const;
+  {
+    title: "Residential",
+    swatch: "#2f5d3a",
+    description:
+      "From a single room to a whole home, we treat your house with the care, cleanliness, and respect it deserves.",
+    icon: "heritage",
+  },
+];
 
+// Paraphrased from the themes in public Angi / HomeAdvisor reviews.
+// Replace with verbatim quotes + names once you have permission.
 export const testimonials = [
   {
     quote:
-      "Mario and his crew repainted our entire interior in three days. Spotless work, on time, and they treated our home like their own. Couldn't be happier.",
-    name: "Jennifer R.",
-    location: "Homeowner, Springfield",
+      "On time and on budget from start to finish. Mario was patient helping us choose colors, and the workmanship was outstanding.",
+    name: "Verified homeowner",
+    source: "Angi review",
   },
   {
     quote:
-      "Best contractor experience we've had. Honest quote, no surprises, and the exterior looks better than the day we bought the house.",
-    name: "Mark T.",
-    location: "Homeowner, Chatham",
+      "Friendly, professional, and thorough. They kept everything clean and quiet and treated our older home with real care.",
+    name: "Verified homeowner",
+    source: "HomeAdvisor review",
   },
   {
     quote:
-      "We use Mario's Painting for all of our rental turnovers. Reliable, fast, and the price is always fair. Highly recommend.",
-    name: "Diana P.",
-    location: "Property Manager, Rochester",
+      "Courteous crew that made every commitment on time. We'd absolutely hire Mario's Painting again.",
+    name: "Verified homeowner",
+    source: "HomeAdvisor review",
   },
-] as const;
+];

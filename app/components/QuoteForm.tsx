@@ -39,52 +39,64 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="quote" className="bg-white py-20 lg:py-28">
+    <section id="quote" className="bg-paper-deep py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-3xl bg-brand shadow-xl lg:grid lg:grid-cols-5">
-          <div className="p-8 text-white lg:col-span-2 lg:p-12">
-            <h2 className="text-3xl font-extrabold tracking-tight">
-              Get your free estimate
+        <div className="overflow-hidden border border-ink/10 bg-plum-deep shadow-xl lg:grid lg:grid-cols-5">
+          <div className="p-8 text-paper lg:col-span-2 lg:p-12">
+            <h2 className="font-display text-3xl font-bold uppercase tracking-tight">
+              Free estimate
             </h2>
-            <p className="mt-4 text-blue-100">
-              Tell us a bit about your project and we&apos;ll get back to you
-              fast — usually the same day — with a clear, honest quote.
+            <p className="mt-4 text-paper/80">
+              Tell us about your project and we&apos;ll get right back to you
+              with a clear, honest quote. Prefer to talk? Just call.
             </p>
 
-            <div className="mt-8 space-y-4 text-sm">
+            <div className="mt-8 space-y-3 text-sm">
               <a
                 href={`tel:${site.phoneHref}`}
-                className="flex items-center gap-3 font-semibold"
+                className="flex items-center gap-3 font-bold"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-white/10">
+                <span className="grid h-10 w-10 place-items-center rounded-sm bg-paper/10">
                   <Icon name="phone" width={18} height={18} />
                 </span>
                 {site.phoneDisplay}
               </a>
-              <p className="flex items-center gap-3 text-blue-100">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-white/10">
+              <a
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-3 break-all text-paper/85"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-sm bg-paper/10">
+                  <Icon name="mail" width={18} height={18} />
+                </span>
+                {site.email}
+              </a>
+              <p className="flex items-center gap-3 text-paper/85">
+                <span className="grid h-10 w-10 place-items-center rounded-sm bg-paper/10">
                   <Icon name="clock" width={18} height={18} />
                 </span>
                 {site.hours}
               </p>
             </div>
+            <p className="mt-8 text-xs text-paper/55">
+              {site.licenseInfo} · WA License {site.license}
+            </p>
           </div>
 
-          <div className="bg-white p-8 lg:col-span-3 lg:p-12">
+          <div className="bg-paper p-8 lg:col-span-3 lg:p-12">
             {status === "success" ? (
               <div className="flex h-full min-h-[20rem] flex-col items-center justify-center text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-green-100 text-green-600">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-green/15 text-green-deep">
                   <Icon name="check" width={32} height={32} />
                 </span>
-                <h3 className="mt-5 text-2xl font-bold text-slate-900">
+                <h3 className="mt-5 font-display text-2xl font-bold text-ink">
                   Request received!
                 </h3>
-                <p className="mt-2 max-w-sm text-slate-600">
+                <p className="mt-2 max-w-sm text-ink/65">
                   Thanks for reaching out. We&apos;ll be in touch shortly. Need
                   us sooner? Call{" "}
                   <a
                     href={`tel:${site.phoneHref}`}
-                    className="font-semibold text-brand"
+                    className="font-bold text-plum"
                   >
                     {site.phoneDisplay}
                   </a>
@@ -104,19 +116,14 @@ export default function QuoteForm() {
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Full name" name="name" required />
-                  <Field
-                    label="Phone"
-                    name="phone"
-                    type="tel"
-                    required
-                  />
+                  <Field label="Phone" name="phone" type="tel" required />
                 </div>
                 <Field label="Email" name="email" type="email" required />
 
                 <div>
                   <label
                     htmlFor="service"
-                    className="mb-1.5 block text-sm font-medium text-slate-700"
+                    className="mb-1.5 block text-sm font-semibold text-ink/80"
                   >
                     Service needed
                   </label>
@@ -125,7 +132,7 @@ export default function QuoteForm() {
                     name="service"
                     required
                     defaultValue=""
-                    className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                    className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
                   >
                     <option value="" disabled>
                       Select a service…
@@ -142,7 +149,7 @@ export default function QuoteForm() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="mb-1.5 block text-sm font-medium text-slate-700"
+                    className="mb-1.5 block text-sm font-semibold text-ink/80"
                   >
                     Project details
                   </label>
@@ -151,12 +158,12 @@ export default function QuoteForm() {
                     name="message"
                     rows={4}
                     placeholder="Rooms, square footage, timeline, anything helpful…"
-                    className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                    className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <p className="rounded-sm bg-red-50 px-4 py-3 text-sm text-red-700">
                     {error}
                   </p>
                 )}
@@ -164,16 +171,16 @@ export default function QuoteForm() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-slate-900 shadow-sm transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex w-full items-center justify-center gap-2 bg-green px-6 py-4 text-base font-bold uppercase tracking-wide text-paper shadow-[4px_4px_0_0_var(--plum)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_var(--plum)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === "submitting"
                     ? "Sending…"
-                    : "Send My Free Quote Request"}
+                    : "Send My Free Estimate Request"}
                   {status !== "submitting" && (
                     <Icon name="arrow" width={18} height={18} />
                   )}
                 </button>
-                <p className="text-center text-xs text-slate-500">
+                <p className="text-center text-xs text-ink/50">
                   No spam, ever. We only use your info to contact you about
                   your project.
                 </p>
@@ -201,7 +208,7 @@ function Field({
     <div>
       <label
         htmlFor={name}
-        className="mb-1.5 block text-sm font-medium text-slate-700"
+        className="mb-1.5 block text-sm font-semibold text-ink/80"
       >
         {label}
         {required && <span className="text-red-500"> *</span>}
@@ -211,7 +218,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+        className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
       />
     </div>
   );

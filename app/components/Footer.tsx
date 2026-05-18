@@ -1,80 +1,83 @@
 import { site } from "../site-config";
 import { Icon } from "./icons";
+import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark text-blue-100">
+    <footer className="bg-plum-deep text-paper/75">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-2">
-          <div className="flex items-center gap-2 text-lg font-bold text-white">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-slate-900">
-              <Icon name="roller" width={20} height={20} />
-            </span>
-            {site.name}
-          </div>
+          <BrandLogo light />
           <p className="mt-4 max-w-sm text-sm">
-            {site.tagline} in {site.city}, {site.region} and surrounding areas.
-            {" "}
-            {site.licenseInfo}. Free estimates, guaranteed work.
+            {site.tagline}. Serving {site.city}, {site.region} and{" "}
+            {site.areaName} since {site.established}. {site.licenseInfo} — WA
+            License {site.license}.
           </p>
         </div>
 
         <div>
-          <h3 className="font-semibold text-white">Contact</h3>
+          <h3 className="font-display font-bold uppercase tracking-wide text-paper">
+            Contact
+          </h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
               <a
                 href={`tel:${site.phoneHref}`}
-                className="transition-colors hover:text-white"
+                className="flex items-center gap-2 transition-colors hover:text-paper"
               >
+                <Icon name="phone" width={15} height={15} />
                 {site.phoneDisplay}
               </a>
             </li>
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="transition-colors hover:text-white"
+                className="flex items-center gap-2 break-all transition-colors hover:text-paper"
               >
+                <Icon name="mail" width={15} height={15} />
                 {site.email}
               </a>
             </li>
-            <li>{site.hours}</li>
+            <li className="flex items-center gap-2">
+              <Icon name="pin" width={15} height={15} />
+              {site.address.street}, {site.address.city}, {site.address.region}{" "}
+              {site.address.postalCode}
+            </li>
+            <li className="flex items-center gap-2">
+              <Icon name="clock" width={15} height={15} />
+              {site.hours}
+            </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="font-semibold text-white">Quick Links</h3>
+          <h3 className="font-display font-bold uppercase tracking-wide text-paper">
+            Explore
+          </h3>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <a href="#services" className="transition-colors hover:text-white">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#work" className="transition-colors hover:text-white">
-                Our Work
-              </a>
-            </li>
-            <li>
-              <a href="#reviews" className="transition-colors hover:text-white">
-                Reviews
-              </a>
-            </li>
-            <li>
-              <a href="#quote" className="transition-colors hover:text-white">
-                Free Quote
-              </a>
-            </li>
+            {[
+              ["#services", "Services"],
+              ["#work", "Photo Galleries"],
+              ["#about", "About Us"],
+              ["#reviews", "Reviews"],
+              ["#quote", "Free Estimate"],
+            ].map(([href, label]) => (
+              <li key={href}>
+                <a href={href} className="transition-colors hover:text-paper">
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-paper/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>Serving {site.serviceAreas.slice(0, 4).join(" · ")} &amp; more</p>
+          <p>{site.serviceAreas.slice(0, 5).join(" · ")} &amp; more</p>
         </div>
       </div>
     </footer>

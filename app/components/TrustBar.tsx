@@ -2,29 +2,30 @@ import { site } from "../site-config";
 import { Icon } from "./icons";
 
 const items = [
-  { icon: "award", title: `${site.yearsInBusiness}+ Years`, sub: "In business" },
+  {
+    icon: "clock",
+    title: `${site.yearsInBusiness}+ Years`,
+    sub: `Serving ${site.city} since ${site.established}`,
+  },
   { icon: "shield", title: site.licenseInfo, sub: "For your protection" },
-  { icon: "star", title: "5-Star Rated", sub: "By local homeowners" },
-  { icon: "clock", title: "On-Time", sub: "Projects done right" },
+  { icon: "badge", title: site.license, sub: "WA contractor license" },
+  { icon: "star", title: "On Time", sub: "On budget, every time" },
 ];
 
 export default function TrustBar() {
   return (
-    <section className="border-b border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden px-4 py-8 sm:px-6 lg:grid-cols-4 lg:px-8">
+    <section className="border-b border-ink/10 bg-paper">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-4 gap-y-6 px-4 py-9 sm:px-6 lg:grid-cols-4 lg:px-8">
         {items.map((it) => (
-          <div
-            key={it.title}
-            className="flex items-center gap-3 px-2 py-3"
-          >
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-brand/10 text-brand">
+          <div key={it.title} className="flex items-center gap-3">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-plum/10 text-plum">
               <Icon name={it.icon} width={22} height={22} />
             </span>
             <div>
-              <p className="font-bold leading-tight text-slate-900">
+              <p className="font-display text-lg font-bold leading-tight text-ink">
                 {it.title}
               </p>
-              <p className="text-sm text-slate-500">{it.sub}</p>
+              <p className="text-sm text-ink/55">{it.sub}</p>
             </div>
           </div>
         ))}

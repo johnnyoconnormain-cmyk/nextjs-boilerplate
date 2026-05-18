@@ -1,19 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --brand: #0b3d6b;
-  --brand-dark: #082c4d;
-  --accent: #f59e0b;
+  /* Their real brand colors — plum wordmark + green accent — refined. */
+  --paper: #f7f4ef;
+  --paper-deep: #ebe5da;
+  --ink: #1f1620;
+  --plum: #6a1f5c;
+  --plum-deep: #45123c;
+  --green: #4f8a2f;
+  --green-deep: #3a6622;
+  --gold: #c98a2b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-brand: var(--brand);
-  --color-brand-dark: var(--brand-dark);
-  --color-accent: var(--accent);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-plum: var(--plum);
+  --color-plum-deep: var(--plum-deep);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-gold: var(--gold);
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Palatino, Georgia, "Times New Roman", serif;
 }
 
 html {
@@ -22,25 +33,64 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--paper);
+  color: var(--ink);
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Brushed paint edge for section transitions — adds craft, not flatness. */
+.brush-edge {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='40' preserveAspectRatio='none' viewBox='0 0 1200 40'%3E%3Cpath d='M0 40V18c40-6 70 4 120 2s90-12 150-9 110 14 180 11 120-14 190-11 130 13 200 10 120-12 160-8v17z' fill='%23000'/%3E%3C/svg%3E")
+    bottom / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='40' preserveAspectRatio='none' viewBox='0 0 1200 40'%3E%3Cpath d='M0 40V18c40-6 70 4 120 2s90-12 150-9 110 14 180 11 120-14 190-11 130 13 200 10 120-12 160-8v17z' fill='%23000'/%3E%3C/svg%3E")
+    bottom / 100% 100% no-repeat;
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 .animate-fade-up {
-  animation: fade-up 0.7s ease-out both;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes drip {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+.animate-drip {
+  transform-origin: top;
+  animation: drip 1.1s ease-out 0.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-drip {
+    animation: none;
+  }
 }

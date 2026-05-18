@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TrustBar from "./components/TrustBar";
 import Services from "./components/Services";
+import CabinetFeature from "./components/CabinetFeature";
 import About from "./components/About";
 import Process from "./components/Process";
 import Gallery from "./components/Gallery";
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Services />
+        <CabinetFeature />
         <About />
         <Process />
         <Gallery />
@@ -31,7 +33,7 @@ export default function Home() {
 
       <a
         href={`tel:${site.phoneHref}`}
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-accent px-5 py-3.5 font-semibold text-slate-900 shadow-xl transition-transform hover:scale-105 md:hidden"
+        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-green px-5 py-3.5 font-bold text-paper shadow-xl transition-transform hover:scale-105 lg:hidden"
         aria-label={`Call ${site.name}`}
       >
         <Icon name="phone" width={20} height={20} />

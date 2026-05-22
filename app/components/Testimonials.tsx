@@ -3,44 +3,44 @@ import { Icon } from "./icons";
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="bg-paper-deep py-20 lg:py-28">
+    <section id="reviews" className="bg-bone-deep/40 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-green">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-lime-deep">
             Reviews
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold uppercase tracking-tight text-ink sm:text-4xl">
-            What neighbors are saying
+          <h2 className="mt-3 text-3xl font-black uppercase tracking-tight text-ink sm:text-4xl lg:text-5xl">
+            What clients say
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <blockquote
               key={i}
-              className="relative flex flex-col border border-ink/10 bg-paper p-7"
+              className="flex flex-col rounded-2xl border border-ink/10 bg-bone p-7"
             >
               <Icon
                 name="quote"
-                width={34}
-                height={34}
-                className="text-green/30"
+                width={32}
+                height={32}
+                className="text-lime"
               />
-              <p className="mt-3 flex-1 font-display text-lg leading-relaxed text-ink/85">
+              <p className="mt-3 flex-1 text-lg leading-relaxed text-ink/85">
                 {t.quote}
               </p>
               <footer className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4">
                 <span className="font-semibold text-ink">{t.name}</span>
-                <span className="text-xs font-bold uppercase tracking-widest text-green-deep">
+                <span className="text-xs font-bold uppercase tracking-widest text-navy">
                   {t.source}
                 </span>
               </footer>
             </blockquote>
           ))}
         </div>
-        <p className="mt-8 text-center text-xs text-ink/45">
-          Themes from public reviews — replace with verbatim quotes once you
-          have permission to publish them.
+        <p className="mt-8 text-xs text-ink/45">
+          Themes from typical landscape-client feedback — replace with verbatim
+          customer quotes once you have permission to publish them.
         </p>
       </div>
     </section>

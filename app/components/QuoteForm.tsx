@@ -39,16 +39,16 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="quote" className="bg-paper-deep py-20 lg:py-28">
+    <section id="quote" className="bg-bone-deep/40 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden border border-ink/10 bg-plum-deep shadow-xl lg:grid lg:grid-cols-5">
-          <div className="p-8 text-paper lg:col-span-2 lg:p-12">
-            <h2 className="font-display text-3xl font-bold uppercase tracking-tight">
-              Free estimate
+        <div className="overflow-hidden rounded-3xl border border-ink/10 bg-navy-deep shadow-xl lg:grid lg:grid-cols-5">
+          <div className="p-8 text-bone lg:col-span-2 lg:p-12">
+            <h2 className="text-3xl font-black uppercase tracking-tight">
+              Request a service
             </h2>
-            <p className="mt-4 text-paper/80">
-              Tell us about your project and we&apos;ll get right back to you
-              with a clear, honest quote. Prefer to talk? Just call.
+            <p className="mt-4 text-bone/85">
+              Tell us about your property and we&apos;ll follow up fast with a
+              clear estimate. Prefer to talk first? Just call.
             </p>
 
             <div className="mt-8 space-y-3 text-sm">
@@ -56,39 +56,43 @@ export default function QuoteForm() {
                 href={`tel:${site.phoneHref}`}
                 className="flex items-center gap-3 font-bold"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-sm bg-paper/10">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-bone/10">
                   <Icon name="phone" width={18} height={18} />
                 </span>
                 {site.phoneDisplay}
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-3 break-all text-paper/85"
+                className="flex items-center gap-3 break-all text-bone/85"
               >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-sm bg-paper/10">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-bone/10">
                   <Icon name="mail" width={18} height={18} />
                 </span>
                 {site.email}
               </a>
-              <p className="flex items-center gap-3 text-paper/85">
-                <span className="grid h-10 w-10 place-items-center rounded-sm bg-paper/10">
+              <p className="flex items-center gap-3 text-bone/85">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-bone/10">
+                  <Icon name="pin" width={18} height={18} />
+                </span>
+                {site.address.poBox}, {site.address.city}, {site.address.region}{" "}
+                {site.address.postalCode}
+              </p>
+              <p className="flex items-center gap-3 text-bone/85">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-bone/10">
                   <Icon name="clock" width={18} height={18} />
                 </span>
                 {site.hours}
               </p>
             </div>
-            <p className="mt-8 text-xs text-paper/55">
-              {site.licenseInfo} · WA License {site.license}
-            </p>
           </div>
 
-          <div className="bg-paper p-8 lg:col-span-3 lg:p-12">
+          <div className="bg-bone p-8 lg:col-span-3 lg:p-12">
             {status === "success" ? (
               <div className="flex h-full min-h-[20rem] flex-col items-center justify-center text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-green/15 text-green-deep">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-lime text-navy-deep">
                   <Icon name="check" width={32} height={32} />
                 </span>
-                <h3 className="mt-5 font-display text-2xl font-bold text-ink">
+                <h3 className="mt-5 text-2xl font-extrabold text-ink">
                   Request received!
                 </h3>
                 <p className="mt-2 max-w-sm text-ink/65">
@@ -96,7 +100,7 @@ export default function QuoteForm() {
                   us sooner? Call{" "}
                   <a
                     href={`tel:${site.phoneHref}`}
-                    className="font-bold text-plum"
+                    className="font-bold text-navy"
                   >
                     {site.phoneDisplay}
                   </a>
@@ -122,6 +126,30 @@ export default function QuoteForm() {
 
                 <div>
                   <label
+                    htmlFor="property"
+                    className="mb-1.5 block text-sm font-semibold text-ink/80"
+                  >
+                    Property type
+                  </label>
+                  <select
+                    id="property"
+                    name="property"
+                    required
+                    defaultValue=""
+                    className="w-full rounded-lg border border-ink/20 bg-bone px-4 py-2.5 text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20"
+                  >
+                    <option value="" disabled>
+                      Select…
+                    </option>
+                    <option>Residential</option>
+                    <option>HOA</option>
+                    <option>Apartment / Condo</option>
+                    <option>Commercial / Retail</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
                     htmlFor="service"
                     className="mb-1.5 block text-sm font-semibold text-ink/80"
                   >
@@ -132,7 +160,7 @@ export default function QuoteForm() {
                     name="service"
                     required
                     defaultValue=""
-                    className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
+                    className="w-full rounded-lg border border-ink/20 bg-bone px-4 py-2.5 text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20"
                   >
                     <option value="" disabled>
                       Select a service…
@@ -157,13 +185,13 @@ export default function QuoteForm() {
                     id="message"
                     name="message"
                     rows={4}
-                    placeholder="Rooms, square footage, timeline, anything helpful…"
-                    className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
+                    placeholder="Property size, timeline, anything helpful…"
+                    className="w-full rounded-lg border border-ink/20 bg-bone px-4 py-2.5 text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20"
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="rounded-sm bg-red-50 px-4 py-3 text-sm text-red-700">
+                  <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
                     {error}
                   </p>
                 )}
@@ -171,18 +199,17 @@ export default function QuoteForm() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="inline-flex w-full items-center justify-center gap-2 bg-green px-6 py-4 text-base font-bold uppercase tracking-wide text-paper shadow-[4px_4px_0_0_var(--plum)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_var(--plum)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime px-6 py-4 text-base font-extrabold uppercase tracking-wide text-navy-deep transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === "submitting"
                     ? "Sending…"
-                    : "Send My Free Estimate Request"}
+                    : "Request my free estimate"}
                   {status !== "submitting" && (
                     <Icon name="arrow" width={18} height={18} />
                   )}
                 </button>
                 <p className="text-center text-xs text-ink/50">
-                  No spam, ever. We only use your info to contact you about
-                  your project.
+                  No spam — we only use your info to follow up on your project.
                 </p>
               </form>
             )}
@@ -218,7 +245,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-sm border border-ink/20 bg-paper px-4 py-2.5 text-ink outline-none focus:border-plum focus:ring-2 focus:ring-plum/20"
+        className="w-full rounded-lg border border-ink/20 bg-bone px-4 py-2.5 text-ink outline-none focus:border-navy focus:ring-2 focus:ring-navy/20"
       />
     </div>
   );

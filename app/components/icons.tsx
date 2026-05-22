@@ -14,12 +14,6 @@ export function Icon({
   ...props
 }: { name: string } & SVGProps<SVGSVGElement>) {
   const paths: Record<string, React.ReactNode> = {
-    roller: (
-      <>
-        <rect x="3" y="4" width="13" height="5" rx="1" />
-        <path d="M16 6.5h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-7a2 2 0 0 0-2 2V20" />
-      </>
-    ),
     house: (
       <>
         <path d="M3 10.5 12 4l9 6.5" />
@@ -27,30 +21,60 @@ export function Icon({
         <path d="M10 20v-5h4v5" />
       </>
     ),
-    cabinet: (
-      <>
-        <rect x="4" y="3" width="16" height="18" rx="1" />
-        <path d="M12 3v18M9 7v3M15 7v3" />
-      </>
-    ),
-    heritage: (
-      <>
-        <path d="M4 21h16M5 21V9l7-5 7 5v12" />
-        <path d="M9 21v-6h6v6M9 11h6" />
-      </>
-    ),
-    log: (
-      <>
-        <ellipse cx="7" cy="12" rx="3" ry="7" />
-        <path d="M7 5h10M7 19h10" />
-        <ellipse cx="17" cy="12" rx="3" ry="7" />
-        <path d="M17 10v4" />
-      </>
-    ),
     building: (
       <>
         <rect x="5" y="3" width="14" height="18" rx="1" />
         <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" />
+      </>
+    ),
+    store: (
+      <>
+        <path d="M3 9l1.5-4h15L21 9" />
+        <path d="M4 9v11h16V9" />
+        <path d="M9 20v-6h6v6" />
+      </>
+    ),
+    fence: (
+      <>
+        <path d="M4 7l1.5-2 1.5 2v13h-3z" />
+        <path d="M10 7l1.5-2 1.5 2v13h-3z" />
+        <path d="M16 7l1.5-2 1.5 2v13h-3z" />
+        <path d="M2 11h20M2 16h20" />
+      </>
+    ),
+    leaf: (
+      <>
+        <path d="M5 19c0-8 7-15 16-15-.5 9-7 16-16 16z" />
+        <path d="M5 19c4-4 8-8 14-12" />
+      </>
+    ),
+    shovel: (
+      <>
+        <path d="M14 4l6 6-3 3-2-2-7 7-3-1 1-3 7-7-2-2z" />
+      </>
+    ),
+    wall: (
+      <>
+        <rect x="3" y="6" width="18" height="4" />
+        <rect x="3" y="14" width="18" height="4" />
+        <path d="M9 6v4M15 6v4M6 14v4M12 14v4M18 14v4" />
+      </>
+    ),
+    mower: (
+      <>
+        <path d="M3 16h11l2-5h4l1 3v2" />
+        <circle cx="7" cy="18" r="2" />
+        <circle cx="18" cy="18" r="2" />
+        <path d="M6 11l3-4" />
+      </>
+    ),
+    drop: (
+      <path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z" />
+    ),
+    sun: (
+      <>
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" />
       </>
     ),
     phone: (
@@ -88,12 +112,6 @@ export function Icon({
         <path d="M12 8v4l3 2" />
       </>
     ),
-    badge: (
-      <>
-        <circle cx="12" cy="10" r="6" />
-        <path d="M8.5 15l-1.5 6 5-3 5 3-1.5-6" />
-      </>
-    ),
     quote: (
       <path
         d="M9 7c-2.5 1-4 3.2-4 6v4h5v-5H7c0-1.7 1-3.2 2.6-4zm9 0c-2.5 1-4 3.2-4 6v4h5v-5h-3c0-1.7 1-3.2 2.6-4z"
@@ -111,60 +129,47 @@ export function Icon({
   );
 }
 
-// A clean recreation of Mario's Sicilian Trinacria mark: three bent legs in
-// 120° rotational symmetry around a central roundel, with a painter's roller
-// motif. Single-ink so it reads like their original stamp logo.
-export function Trinacria({
+// Recreation of BR Landscaping's actual logo: navy oval with bold white "BR"
+// inside, fine inner border ring. Matches the screenshot of the live site.
+export function BROval({
   className = "",
-  size = 40,
+  size = 64,
 }: {
   className?: string;
   size?: number;
 }) {
-  const leg = (
-    <path
-      d="M24 24 L24 9 Q24 6 27 6 L31 6 Q34 6 33.5 9 L31 13"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  );
   return (
     <svg
       width={size}
-      height={size}
-      viewBox="0 0 48 48"
+      height={(size * 80) / 70}
+      viewBox="0 0 70 80"
       className={className}
       role="img"
-      aria-label="Mario's Painting"
+      aria-label="BR Landscaping"
     >
-      <circle
-        cx="24"
-        cy="24"
-        r="22"
+      <ellipse cx="35" cy="40" rx="32" ry="36" fill="var(--navy)" />
+      <ellipse
+        cx="35"
+        cy="40"
+        rx="28"
+        ry="32"
         fill="none"
-        stroke="currentColor"
+        stroke="#fff"
         strokeWidth="1.5"
-        opacity="0.55"
+        opacity="0.85"
       />
-      <g>
-        {leg}
-        <g transform="rotate(120 24 24)">{leg}</g>
-        <g transform="rotate(240 24 24)">{leg}</g>
-      </g>
-      <circle cx="24" cy="24" r="6.5" fill="currentColor" />
-      {/* painter's roller across the center */}
-      <rect
-        x="17.5"
-        y="22.4"
-        width="13"
-        height="3.2"
-        rx="1"
-        fill="var(--color-paper, #f7f4ef)"
-      />
-      <circle cx="24" cy="24" r="1.6" fill="currentColor" />
+      <text
+        x="35"
+        y="52"
+        textAnchor="middle"
+        fontFamily="Georgia, 'Times New Roman', serif"
+        fontWeight="700"
+        fontSize="34"
+        letterSpacing="0.5"
+        fill="#fff"
+      >
+        BR
+      </text>
     </svg>
   );
 }

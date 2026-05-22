@@ -1,138 +1,102 @@
 import { site } from "../site-config";
-import { Icon, Trinacria } from "./icons";
-
-const swatches = [
-  { c: "#6a1f5c", label: "Plum" },
-  { c: "#4f8a2f", label: "Garden" },
-  { c: "#c98a2b", label: "Ochre" },
-  { c: "#3a4a63", label: "Slate" },
-  { c: "#7a4326", label: "Walnut" },
-  { c: "#2f5d3a", label: "Pine" },
-];
+import { Icon } from "./icons";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-plum-deep text-paper">
+    <section id="top" className="relative overflow-hidden bg-navy-deep text-bone">
+      {/* Layered sky → green hero stage (placeholder for a real photo). */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            "repeating-linear-gradient(135deg, #fff 0 2px, transparent 2px 22px)",
+          background:
+            "linear-gradient(180deg, #4a7eb6 0%, #6fa8d8 35%, #cfe1c2 62%, #5a9046 75%, #2f5d3a 100%)",
         }}
       />
-      <Trinacria
-        size={420}
-        className="pointer-events-none absolute -right-24 -top-16 text-paper/[0.05]"
-      />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-28">
-        <div className="animate-fade-up lg:col-span-7">
-          <p className="mb-5 inline-flex items-center gap-2 border border-paper/25 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-paper/85">
-            <span className="inline-block h-2 w-2 rounded-full bg-green" />
-            Ellensburg &amp; {site.areaName} · Since {site.established}
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 mow-stripes" />
+
+      <div className="relative mx-auto grid max-w-7xl items-end gap-10 px-4 pb-24 pt-24 sm:px-6 lg:grid-cols-12 lg:px-8 lg:pb-32 lg:pt-28">
+        <div className="animate-fade-up lg:col-span-8">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-bone/15 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-bone backdrop-blur">
+            <span className="inline-block h-2 w-2 rounded-full bg-lime" />
+            Family-owned · {site.city}, {site.region} · Since {site.established}
           </p>
-          <h1 className="font-display text-4xl font-bold uppercase leading-[1.06] tracking-tight sm:text-5xl lg:text-[3.7rem]">
-            Highly
-            <span className="relative mx-2 inline-block text-green">
-              Professional
-              <svg
-                className="absolute -bottom-2 left-0 w-full"
-                height="10"
-                viewBox="0 0 200 10"
-                preserveAspectRatio="none"
-                aria-hidden
-              >
-                <path
-                  d="M2 7c40-5 90-6 196-3"
-                  fill="none"
-                  stroke="var(--green)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            Painting
+          <h1 className="text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-[5.25rem]">
+            Landscapes,
+            <br />
+            <span className="text-lime">done properly.</span>
           </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-paper/80">
-            For nearly {site.yearsInBusiness} years, Mario has painted{" "}
-            {site.city}&apos;s homes, historic bungalows, and businesses the
-            careful way — unobtrusive, quiet, and clean, with work finished on
-            time and on budget. No gimmicks. Just craftsmanship that lasts.
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-bone/90">
+            Design, installation, hardscapes, and year-round maintenance for
+            homes, HOAs, apartments, and businesses across {site.city} and{" "}
+            {site.areaName}. Reliable, sharp, and built to add real value to
+            your property.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href="#quote"
-              className="inline-flex items-center justify-center gap-2 bg-green px-7 py-4 text-base font-bold uppercase tracking-wide text-paper shadow-[4px_4px_0_0_rgba(0,0,0,0.35)] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.35)]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-4 text-base font-extrabold uppercase tracking-wide text-navy-deep transition-transform hover:scale-[1.03]"
             >
-              Get My Free Estimate
+              Request a Service
               <Icon name="arrow" width={18} height={18} />
             </a>
             <a
               href={`tel:${site.phoneHref}`}
-              className="inline-flex items-center justify-center gap-2 border border-paper/35 px-7 py-4 text-base font-bold text-paper transition-colors hover:bg-paper/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-bone/40 bg-bone/10 px-7 py-4 text-base font-bold text-bone backdrop-blur transition-colors hover:bg-bone/20"
             >
               <Icon name="phone" width={18} height={18} />
               {site.phoneDisplay}
             </a>
           </div>
 
-          <ul className="mt-9 flex flex-wrap gap-x-7 gap-y-2 text-sm text-paper/75">
+          <ul className="mt-9 flex flex-wrap gap-x-7 gap-y-2 text-sm text-bone/85">
             {[
+              `${site.yearsInBusiness}+ years on the Eastside`,
               site.licenseInfo,
-              `License ${site.license}`,
-              "On time & on budget",
+              "Free estimates, no pressure",
             ].map((t) => (
               <li key={t} className="flex items-center gap-2">
-                <Icon name="check" width={16} height={16} className="text-green" />
+                <Icon name="check" width={16} height={16} className="text-lime" />
                 {t}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="animate-fade-up lg:col-span-5">
-          <div className="relative mx-auto max-w-sm">
-            <div className="rotate-[2deg] border-4 border-paper bg-paper p-3 shadow-2xl">
-              <div className="grid grid-cols-2">
-                {swatches.map((s, i) => (
-                  <div
-                    key={s.label}
-                    className="flex flex-col justify-between p-4 text-white"
-                    style={{ background: s.c, aspectRatio: "1.4" }}
-                  >
-                    <span className="text-[0.65rem] font-bold uppercase tracking-widest opacity-80">
-                      No. {i + 1}
-                    </span>
-                    <span className="font-display text-lg">{s.label}</span>
-                  </div>
-                ))}
+        {/* The Money Magazine hook — actually their best line. */}
+        <div className="animate-fade-up lg:col-span-4">
+          <div className="relative ml-auto max-w-sm rounded-3xl bg-bone p-7 text-ink shadow-2xl">
+            <span className="text-[0.65rem] font-bold uppercase tracking-[0.25em] text-lime-deep">
+              By the numbers
+            </span>
+            <p className="mt-3 text-5xl font-black text-navy">100–200%</p>
+            <p className="mt-2 text-sm font-semibold text-ink/70">
+              Recovery value commercial landscaping can deliver at the time of
+              sale.
+            </p>
+            <p className="mt-3 text-[0.7rem] font-medium uppercase tracking-widest text-ink/45">
+              — Money Magazine
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+              <div className="rounded-xl bg-navy-deep p-4 text-bone">
+                <p className="text-3xl font-black text-lime">
+                  {site.yearsInBusiness}+
+                </p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-bone/75">
+                  Years in business
+                </p>
               </div>
-              <p className="px-1 pb-1 pt-3 text-center font-display text-sm text-ink">
-                Mario&apos;s hand-mixed color fan
-              </p>
+              <div className="rounded-xl bg-bone-deep p-4">
+                <p className="text-3xl font-black text-navy">4</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-ink/65">
+                  Property types served
+                </p>
+              </div>
             </div>
-            <div className="absolute -right-4 -top-6 -rotate-12 rounded-full border-[3px] border-green bg-paper px-4 py-3 text-center shadow-lg">
-              <span className="block font-display text-2xl font-bold leading-none text-plum">
-                {site.yearsInBusiness}+
-              </span>
-              <span className="block text-[0.6rem] font-bold uppercase tracking-widest text-green-deep">
-                Years
-              </span>
-            </div>
-            <div
-              aria-hidden
-              className="animate-drip absolute -bottom-7 left-10 h-8 w-2 rounded-b-full bg-green"
-            />
-            <div
-              aria-hidden
-              className="animate-drip absolute -bottom-10 left-24 h-12 w-2.5 rounded-b-full bg-green"
-              style={{ animationDelay: "0.5s" }}
-            />
           </div>
         </div>
       </div>
-      <div className="brush-edge h-6 w-full bg-paper" />
     </section>
   );
 }

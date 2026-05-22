@@ -2,25 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "./site-config";
 
-const description = `${site.name} — ${site.tagline} serving ${site.city}, ${site.region} and ${site.areaName} since ${site.established}. Interior, exterior, historic restoration, floor coatings & more. ${site.licenseInfo}. Free estimates: ${site.phoneDisplay}.`;
+const description = `${site.legalName} — ${site.tagline}. Landscape design, installation, hardscapes, lawn care, and year-round maintenance for ${site.city}, ${site.region} and ${site.areaName}. Family-owned since ${site.established}. Call ${site.phoneDisplay}.`;
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} | Painters in ${site.city}, ${site.region}`,
+    default: `${site.name} | Landscape Design, Installation & Maintenance in ${site.city}, ${site.region}`,
     template: `%s | ${site.name}`,
   },
   description,
   keywords: [
-    "Ellensburg painter",
-    "Ellensburg painting contractor",
-    "Kittitas Valley painters",
-    "interior painting Ellensburg",
-    "exterior painting Ellensburg",
-    "historic home restoration WA",
-    "epoxy floor coating Ellensburg",
+    "Bellevue landscaping",
+    "landscaping Bellevue WA",
+    "Eastside landscape company",
+    "HOA landscape maintenance Bellevue",
+    "commercial landscaping Bellevue",
+    "hardscape Bellevue",
+    "lawn care Bellevue",
+    "irrigation Bellevue",
   ],
   openGraph: {
-    title: `${site.name} | Painting Contractor in ${site.city}, ${site.region}`,
+    title: `${site.name} | Landscaping in ${site.city}, ${site.region}`,
     description,
     type: "website",
     locale: "en_US",
@@ -30,15 +31,15 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "HousePainter",
-  name: site.name,
+  "@type": "LandscapeService",
+  name: site.legalName,
   description,
   telephone: site.phoneHref,
   email: site.email,
   foundingDate: String(site.established),
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
+    postOfficeBoxNumber: site.address.poBox,
     addressLocality: site.address.city,
     addressRegion: site.address.region,
     postalCode: site.address.postalCode,

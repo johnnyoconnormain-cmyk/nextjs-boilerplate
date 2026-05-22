@@ -1,59 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  /* Their real brand colors — plum wordmark + green accent — refined. */
-  --paper: #f7f4ef;
-  --paper-deep: #ebe5da;
-  --ink: #1f1620;
-  --plum: #6a1f5c;
-  --plum-deep: #45123c;
-  --green: #4f8a2f;
-  --green-deep: #3a6622;
-  --gold: #c98a2b;
+  /* BR Landscaping's real brand colors — navy + lime + warm neutrals. */
+  --bone: #f5f3ee;
+  --bone-deep: #e8e4d9;
+  --ink: #14181f;
+  --navy: #1d3b6f;
+  --navy-deep: #122550;
+  --lime: #9ed52d;
+  --lime-deep: #7fb01f;
+  --moss: #2f5d3a;
 }
 
 @theme inline {
-  --color-background: var(--paper);
+  --color-background: var(--bone);
   --color-foreground: var(--ink);
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
+  --color-bone: var(--bone);
+  --color-bone-deep: var(--bone-deep);
   --color-ink: var(--ink);
-  --color-plum: var(--plum);
-  --color-plum-deep: var(--plum-deep);
-  --color-green: var(--green);
-  --color-green-deep: var(--green-deep);
-  --color-gold: var(--gold);
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    Palatino, Georgia, "Times New Roman", serif;
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-lime: var(--lime);
+  --color-lime-deep: var(--lime-deep);
+  --color-moss: var(--moss);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background-color: var(--paper);
+  background-color: var(--bone);
   color: var(--ink);
   font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
 }
 
-h1,
-h2,
-h3,
-.font-display {
-  font-family: var(--font-display);
+/* Mowing-stripe motif — recurring brand pattern, alternating green bands. */
+.mow-stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(158, 213, 45, 0.18) 0 24px,
+    rgba(158, 213, 45, 0.06) 24px 48px
+  );
 }
 
-/* Brushed paint edge for section transitions — adds craft, not flatness. */
-.brush-edge {
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='40' preserveAspectRatio='none' viewBox='0 0 1200 40'%3E%3Cpath d='M0 40V18c40-6 70 4 120 2s90-12 150-9 110 14 180 11 120-14 190-11 130 13 200 10 120-12 160-8v17z' fill='%23000'/%3E%3C/svg%3E")
-    bottom / 100% 100% no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='40' preserveAspectRatio='none' viewBox='0 0 1200 40'%3E%3Cpath d='M0 40V18c40-6 70 4 120 2s90-12 150-9 110 14 180 11 120-14 190-11 130 13 200 10 120-12 160-8v17z' fill='%23000'/%3E%3C/svg%3E")
-    bottom / 100% 100% no-repeat;
+/* Sharp diagonal section cut — angular, landscape-machinery vibe. */
+.diag-cut-b {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+}
+.diag-cut-t {
+  clip-path: polygon(0 2.5rem, 100% 0, 100% 100%, 0 100%);
 }
 
 @keyframes fade-up {
@@ -70,27 +71,8 @@ h3,
   animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes drip {
-  0% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  100% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-.animate-drip {
-  transform-origin: top;
-  animation: drip 1.1s ease-out 0.3s both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
-  .animate-drip {
+  .animate-fade-up {
     animation: none;
   }
 }
